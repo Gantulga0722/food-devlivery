@@ -21,17 +21,11 @@ export const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
-  const [anchorElUser, setAnchorElUser] = React.useState<null | HTMLElement>(
-    null
-  );
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
-  };
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
   };
   return (
     <AppBar position="static" sx={{ backgroundColor: "#FFF" }}>
@@ -173,22 +167,6 @@ export const ResponsiveAppBar = () => {
                 Нэвтрэх
               </Typography>
             </Box>
-            <Menu
-              sx={{ mt: "45px" }}
-              id="menu-appbar"
-              anchorEl={anchorElUser}
-              anchorOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "right",
-              }}
-              open={Boolean(anchorElUser)}
-              onClose={handleCloseUserMenu}
-            ></Menu>
           </Box>
         </Toolbar>
       </Container>
