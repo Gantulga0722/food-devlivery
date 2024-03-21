@@ -1,6 +1,5 @@
 import Head from "next/head";
 import * as React from "react";
-import { ResponsiveAppBar } from "../components";
 
 const Home = () => {
   return (
@@ -11,9 +10,7 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/Logo.svg" />
       </Head>
-      <main>
-        <ResponsiveAppBar />
-      </main>
+      <main></main>
     </>
   );
 };

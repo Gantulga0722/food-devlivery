@@ -96,6 +96,7 @@ export const ResponsiveAppBar = () => {
                   "&:hover": {
                     color: "#18BA51",
                   },
+                  fontSize: "14px",
                 }}
               >
                 {page}
