@@ -11,7 +11,7 @@ import {
   MenuItem,
   InputBase,
 } from "@mui/material";
-import MenuIcon from "@mui/icons-material/Menu";
+
 import SearchIcon from "@mui/icons-material/Search";
 import { PineConeIcon, BascketIcon, LoginIcon } from "./icons/Icons";
 
@@ -21,43 +21,33 @@ export const ResponsiveAppBar = () => {
   const [anchorElNav, setAnchorElNav] = React.useState<null | HTMLElement>(
     null
   );
-  const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElNav(event.currentTarget);
-  };
+
   const handleCloseNavMenu = () => {
     setAnchorElNav(null);
   };
   return (
-    <AppBar position="static" sx={{ backgroundColor: "#FFF" }}>
+    <AppBar
+      position="static"
+      sx={{
+        display: "flex",
+        backgroundColor: "#FFF",
+        margin: "auto",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <Container maxWidth="xl">
-        <Toolbar disableGutters>
+        <Toolbar
+          disableGutters
+          sx={{
+            width: "1200px",
+            margin: "auto",
+            display: "flex",
+            justifyContent: "center",
+          }}
+        >
           <PineConeIcon />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="#app-bar-with-responsive-menu"
-            sx={{
-              mr: 2,
-              display: { xs: "none", md: "flex" },
-              fontFamily: "monospace",
-              fontWeight: 700,
-              letterSpacing: ".3rem",
-              color: "ActiveBorder",
-              textDecoration: "none",
-            }}
-          ></Typography>
           <Box sx={{ flexGrow: 1, display: { xs: "flex", md: "none" } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              sx={{ color: "aqua" }}
-            >
-              <MenuIcon />
-            </IconButton>
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
