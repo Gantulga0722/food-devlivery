@@ -1,11 +1,14 @@
-import { ResponsiveAppBar } from "./ResponsiveAppBar";
+import { Container } from "@mui/material";
 import { Footer } from "./Footer";
+import { Header } from "./Header";
 
 const Layout = ({ children }: { children: React.ReactNode }) => {
   return (
     <>
-      <ResponsiveAppBar />
-      {children}
+      <Container>
+        <Header />
+        {children}
+      </Container>
       <Footer />
     </>
   );
