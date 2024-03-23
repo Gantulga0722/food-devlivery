@@ -11,20 +11,19 @@ import {
 } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import { useRouter } from "next/router";
-
-const pages = ["НҮҮР", "ХООЛНЫ ЦЭС", "ХҮРГЭЛТИЙН БҮС"];
+import { HeaderButton } from "@/components/buttons";
 
 export const Header = () => {
   const router = useRouter();
   return (
     <Stack
       direction={"row"}
-      width={"1258px"}
-      padding={"8px"}
+      paddingY={"8px"}
       justifyContent={"space-between"}
-      sx={{ margin: "auto", backgroundColor: "#FFF" }}
+      sx={{ backgroundColor: "#FFF" }}
       position={"fixed"}
       zIndex={20}
+      width={"100%"}
     >
       <Container
         maxWidth={"xl"}
@@ -32,29 +31,25 @@ export const Header = () => {
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",
+          width: "1306px",
         }}
       >
         <Stack direction={"row"} alignItems={"center"} gap={"24px"}>
-          <Stack width={"41px"} height={"41px"} padding={"7px 4px"}>
-            <PineConeIcon />
-          </Stack>
+          <ButtonBase onClick={() => router.push("/")}>
+            <Stack width={"41px"} height={"41px"} padding={"7px 4px"}>
+              <PineConeIcon />
+            </Stack>
+          </ButtonBase>
           <Stack direction={"row"} justifyContent={"space-around"}>
-            {pages.map((page, index) => (
-              <Stack key={index} padding={"8px 16px"}>
-                <Typography
-                  color={"black"}
-                  sx={{
-                    fontWeight: 700,
-                    "&:hover": {
-                      color: "#18BA51",
-                    },
-                    fontSize: "14px",
-                  }}
-                >
-                  {page}
-                </Typography>
-              </Stack>
-            ))}
+            <ButtonBase onClick={() => router.push("/")}>
+              <HeaderButton text={"НҮҮР"} />
+            </ButtonBase>
+            <ButtonBase>
+              <HeaderButton text={"ХООЛНЫ ЦЭС"} />
+            </ButtonBase>
+            <ButtonBase>
+              <HeaderButton text={"ХҮРГЭЛТИЙН БҮС"} />
+            </ButtonBase>
           </Stack>
         </Stack>
         <Box

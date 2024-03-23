@@ -1,16 +1,10 @@
-import { Box, Container, Stack, Typography } from "@mui/material";
+import { Box, ButtonBase, Container, Stack, Typography } from "@mui/material";
 import { FooterIcon, FbIcon, InstaIcon, TwitIcon } from "./icons";
-
-const bottomMenu = [
-  "Нүүр",
-  "Холбоо барих",
-  "Хоолны цэс",
-  "Үйлчилгээний нөхцөл",
-  "Хүргэлтийн бүс",
-  "Нууцлалын бодлого",
-];
+import { useRouter } from "next/router";
+import { FooterButton } from "@/components/buttons";
 
 export const Footer = () => {
+  const router = useRouter();
   return (
     <Box
       height={"545px"}
@@ -23,12 +17,17 @@ export const Footer = () => {
     >
       <Container
         maxWidth="xl"
-        sx={{ display: "flex", justifyContent: "center", alignItems: "center" }}
+        sx={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          width: "1258px",
+        }}
       >
         <Stack
           justifyContent={"center"}
           alignItems={"center"}
-          width={"1200px"}
+          width={"1258px"}
           height={"322px"}
           gap={"40px"}
         >
@@ -48,17 +47,26 @@ export const Footer = () => {
           <Stack
             direction={"row"}
             justifyContent={"space-between"}
-            width={"1200px"}
+            width={"1258px"}
           >
-            {bottomMenu.map((text, index) => (
-              <Typography
-                key={index}
-                color={"white"}
-                sx={{ textDecorationLine: "underline" }}
-              >
-                {text}
-              </Typography>
-            ))}
+            <ButtonBase onClick={() => router.push("/")}>
+              <FooterButton text={"Нүүр"} />
+            </ButtonBase>
+            <ButtonBase>
+              <FooterButton text={"Холбоо барих"} />
+            </ButtonBase>
+            <ButtonBase>
+              <FooterButton text={"Хоолны цэс"} />
+            </ButtonBase>
+            <ButtonBase>
+              <FooterButton text={"Үйлчилгээний нөхцөл"} />
+            </ButtonBase>
+            <ButtonBase>
+              <FooterButton text={"Хүргэлтийн бүс"} />
+            </ButtonBase>
+            <ButtonBase>
+              <FooterButton text={"Нууцлалын бодлого"} />
+            </ButtonBase>
           </Stack>
           <Stack gap={"18px"} direction={"row"} alignItems={"center"}>
             <FbIcon />
