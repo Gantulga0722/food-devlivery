@@ -3,38 +3,38 @@ import { LoginButton } from "@/components/buttons";
 import { TextInput, PassWordInput } from "@/components/inputs";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import { useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+// import { useState } from "react";
+// import { v4 as uuidv4 } from "uuid";
 
 export const SignUpComp = () => {
-  const BE_URL = "http://localhost:4000/signup";
-  const [userName, setUserName] = useState("");
-  const [userEmail, setUserEmail] = useState("");
-  const [userAdresse, setUserAdressel] = useState("");
-  const [userPassword, setUserPassword] = useState("");
-  const [userId, setUserId] = useState(uuidv4());
+  // const BE_URL = "http://localhost:4000/signup";
+  // const [userName, setUserName] = useState("");
+  // const [userEmail, setUserEmail] = useState("");
+  // const [userAdresse, setUserAdressel] = useState("");
+  // const [userPassword, setUserPassword] = useState("");
+  // const [userId, setUserId] = useState(uuidv4());
 
-  const handleSubmitUser = async () => {
-    const data = {
-      name: userName,
-      email: userEmail,
-      adresse: userAdresse,
-      password: userPassword,
-      id: userId,
-    };
+  // const handleSubmitUser = async () => {
+  //   const data = {
+  //     name: userName,
+  //     email: userEmail,
+  //     adresse: userAdresse,
+  //     password: userPassword,
+  //     id: userId,
+  //   };
 
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
-    };
-    const FETCHED_DATA = await fetch(BE_URL, options);
-    const FETCHED_JSON = await FETCHED_DATA.json();
+  //   const options = {
+  //     method: "POST",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   };
+  //   const FETCHED_DATA = await fetch(BE_URL, options);
+  //   const FETCHED_JSON = await FETCHED_DATA.json();
 
-    console.log(data);
-  };
+  //   console.log(data);
+  // };
   return (
     <Stack
       padding={"32px"}
@@ -55,7 +55,6 @@ export const SignUpComp = () => {
           <TextInput
             text={"Имэйл"}
             placeHolderText={"И-мэйл хаягаа оруулна уу"}
-            state={setUserName}
           />
           <TextInput text={"Хаяг"} placeHolderText={"Та хаягаа оруулна уу"} />
           <PassWordInput

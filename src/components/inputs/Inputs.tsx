@@ -5,11 +5,9 @@ import { useState } from "react";
 export const TextInput = ({
   text,
   placeHolderText,
-  state,
 }: {
   text: string;
   placeHolderText: string;
-  state: void;
 }) => {
   return (
     <Stack gap={"4px"}>
