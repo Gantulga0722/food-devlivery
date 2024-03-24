@@ -1,23 +1,11 @@
 import { Typography, Stack, ButtonBase } from "@mui/material";
 import { LoginButton } from "@/components/buttons";
-import { TextInput } from "@/components/inputs";
-import { useState } from "react";
-import { Confirm } from "./Confirm";
+import { PassWordInput } from "@/components/inputs";
 
-export const SetPassword = () => {
-  const [component, setComponent] = useState("email");
-  const [text, setText] = useState("");
-
-  const HandlerComponent = () => {
-    setComponent("confirm");
-  };
+export const NewPassword = () => {
   return (
     <Stack>
-      <Stack display={`${component == "email" ? "none" : "flex"}`}>
-        <Confirm email={text} />
-      </Stack>
       <Stack
-        display={`${component == "email" ? "flex" : "none"}`}
         padding={"32px"}
         gap={"48px"}
         bgcolor={"#FFF"}
@@ -27,15 +15,18 @@ export const SetPassword = () => {
       >
         <Stack justifyContent={"center"} width={"384px"} alignItems={"center"}>
           <Typography color={"#0D1118"} fontSize={"28px"} fontWeight={700}>
-            Нууц үг сэргээх
+            Шинэ нууц үг зохиох
           </Typography>
         </Stack>
         <Stack gap={"8px"} width={"384px"}>
           <Stack gap={"16px"}>
-            <TextInput
-              text={"Имэйл"}
-              placeHolderText={"Имэйл хаягаа оруулна уу"}
-              setText={setText}
+            <PassWordInput
+              text={"Нууц үг"}
+              placeHolderText={"Шинэ нууц үг оруулна уу"}
+            />
+            <PassWordInput
+              text={"Нууц үг давтах"}
+              placeHolderText={"Нууц үгээ давтан оруулна уу"}
             />
           </Stack>
         </Stack>
@@ -46,7 +37,7 @@ export const SetPassword = () => {
           alignItems={"center"}
         >
           <Stack>
-            <ButtonBase onClick={() => HandlerComponent()}>
+            <ButtonBase onClick={() => {}}>
               <LoginButton text={"Үргэлжлүүлэх"} />
             </ButtonBase>
           </Stack>

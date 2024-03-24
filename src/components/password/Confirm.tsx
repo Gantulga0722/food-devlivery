@@ -1,23 +1,23 @@
 import { Typography, Stack, ButtonBase } from "@mui/material";
 import { LoginButton } from "@/components/buttons";
-import { TextInput } from "@/components/inputs";
+import { PassWordInput } from "@/components/inputs";
 import { useState } from "react";
-import { Confirm } from "./Confirm";
+import { NewPassword } from "./NewPassword";
 
-export const SetPassword = () => {
-  const [component, setComponent] = useState("email");
-  const [text, setText] = useState("");
+export const Confirm = ({ email }: { email: string }) => {
+  const [component, setComponent] = useState("code");
 
   const HandlerComponent = () => {
     setComponent("confirm");
   };
+
   return (
     <Stack>
-      <Stack display={`${component == "email" ? "none" : "flex"}`}>
-        <Confirm email={text} />
+      <Stack display={`${component == "code" ? "none" : "flex"}`}>
+        <NewPassword />
       </Stack>
       <Stack
-        display={`${component == "email" ? "flex" : "none"}`}
+        display={`${component == "code" ? "flex" : "none"}`}
         padding={"32px"}
         gap={"48px"}
         bgcolor={"#FFF"}
@@ -30,12 +30,28 @@ export const SetPassword = () => {
             Нууц үг сэргээх
           </Typography>
         </Stack>
+        <Stack
+          sx={{ color: "#695C08", fontSize: "16px", fontWeight: 500 }}
+          direction={"row"}
+          width={"384px"}
+          flexWrap={"wrap"}
+        >
+          Таны{" "}
+          <Typography
+            color={"#18BA51"}
+            fontSize={"16px"}
+            fontWeight={500}
+            marginX={"4px"}
+          >
+            {email}
+          </Typography>{" "}
+          руу сэргээх код илгээх болно.
+        </Stack>
         <Stack gap={"8px"} width={"384px"}>
           <Stack gap={"16px"}>
-            <TextInput
-              text={"Имэйл"}
-              placeHolderText={"Имэйл хаягаа оруулна уу"}
-              setText={setText}
+            <PassWordInput
+              text={"Нууц үг сэргээх код"}
+              placeHolderText={"Баталгаажуулах код оруулна уу"}
             />
           </Stack>
         </Stack>

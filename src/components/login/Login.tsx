@@ -1,4 +1,4 @@
-import { Typography, Stack, ButtonBase, Box } from "@mui/material";
+import { Typography, Stack, ButtonBase } from "@mui/material";
 import { LoginButton } from "@/components/buttons";
 import { TextInput, PassWordInput } from "@/components/inputs";
 import { useRouter } from "next/router";
@@ -7,6 +7,7 @@ import { SetPassword } from "@/components/password";
 
 export const LoginComp = () => {
   const [component, setComponent] = useState("login");
+  const [text, setText] = useState("");
 
   const HandlerComponent = () => {
     setComponent("password");
@@ -15,9 +16,9 @@ export const LoginComp = () => {
   const router = useRouter();
   return (
     <Stack>
-      <Box display={`${component == "login" ? "none" : "flex"}`}>
+      <Stack display={`${component == "login" ? "none" : "flex"}`}>
         <SetPassword />
-      </Box>
+      </Stack>
       <Stack
         display={`${component == "login" ? "flex" : "none"}`}
         padding={"32px"}
@@ -37,6 +38,7 @@ export const LoginComp = () => {
             <TextInput
               text={"Имэйл"}
               placeHolderText={"Имэйл хаягаа оруулна уу"}
+              setText={setText}
             />
             <PassWordInput text={"Нууц үг"} placeHolderText={"Нууц үг"} />
           </Stack>

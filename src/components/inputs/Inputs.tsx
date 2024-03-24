@@ -5,9 +5,11 @@ import { useState } from "react";
 export const TextInput = ({
   text,
   placeHolderText,
+  setText,
 }: {
   text: string;
   placeHolderText: string;
+  setText: (p: string) => void;
 }) => {
   return (
     <Stack gap={"4px"}>
@@ -28,6 +30,9 @@ export const TextInput = ({
             flex: 1,
           }}
           placeholder={placeHolderText}
+          onChange={(e) => {
+            setText(`${e.target.value}`);
+          }}
         />
       </Box>
     </Stack>
