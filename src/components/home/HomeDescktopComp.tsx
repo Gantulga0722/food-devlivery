@@ -2,7 +2,7 @@ import { Container, Stack } from "@mui/material";
 import { HomeText } from "./HomeText";
 import { HomePic } from "./HomePic";
 
-export const HomeComp = () => {
+export const HomeDescktopComp = () => {
   return (
     <Stack
       width={"100%"}
@@ -11,14 +11,13 @@ export const HomeComp = () => {
         backgroundColor: "#18BA51",
         backgroundImage: 'URL("/Group 522 (Traced).png")',
       }}
-      margin={"auto"}
       justifyContent={"center"}
       alignItems={"center"}
     >
       <Container
         maxWidth={"xl"}
         sx={{
-          width: "1258px",
+          width: "1306px",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "center",

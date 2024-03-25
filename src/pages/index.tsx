@@ -1,6 +1,7 @@
 import Head from "next/head";
 import * as React from "react";
-import { HomeComp } from "@/components/home";
+import { HomeDescktopComp, HomeInfo } from "@/components/home";
+import { Stack } from "@mui/material";
 
 const Home = () => {
   return (
@@ -11,9 +12,15 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/Logo.svg" />
       </Head>
-      <main>
-        <HomeComp />
-      </main>
+      <Stack
+        width={"100%"}
+        height={"3486px"}
+        sx={{ backgroundColor: "#FFF" }}
+        alignItems={"flex-start"}
+      >
+        <HomeDescktopComp />
+        <HomeInfo />
+      </Stack>
     </>
   );
 };
