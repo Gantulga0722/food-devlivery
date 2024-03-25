@@ -36,6 +36,7 @@ export const SetPassword = () => {
               text={"Имэйл"}
               placeHolderText={"Имэйл хаягаа оруулна уу"}
               setText={setText}
+              value={text}
             />
           </Stack>
         </Stack>

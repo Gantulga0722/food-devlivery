@@ -1,7 +1,13 @@
 import Head from "next/head";
 import * as React from "react";
-import { HomeDescktopComp, HomeInfo } from "@/components/home";
-import { Stack } from "@mui/material";
+import {
+  HomeDescktopComp,
+  HomeInfo,
+  HomeFood,
+  HomeFoodsByCt,
+} from "@/components/home";
+import { Container, Stack } from "@mui/material";
+import { useState } from "react";
 
 const Home = () => {
   return (
@@ -12,14 +18,23 @@ const Home = () => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/Logo.svg" />
       </Head>
+
       <Stack
         width={"100%"}
-        height={"3486px"}
         sx={{ backgroundColor: "#FFF" }}
         alignItems={"flex-start"}
+        marginBottom={"120px"}
       >
         <HomeDescktopComp />
-        <HomeInfo />
+        <Container maxWidth={"xl"} sx={{ width: "1306px" }}>
+          <Stack>
+            <HomeInfo />
+            <HomeFood />
+          </Stack>
+          <Stack>
+            <HomeFoodsByCt />
+          </Stack>
+        </Container>
       </Stack>
     </>
   );
