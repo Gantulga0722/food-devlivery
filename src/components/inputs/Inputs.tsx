@@ -1,15 +1,17 @@
 import { Box, Typography, InputBase, Stack, ButtonBase } from "@mui/material";
-import { HideIcon } from "../icons";
+import { EyeIcon, HiddenEyeIcon } from "../icons";
 import { useState } from "react";
 
 export const TextInput = ({
   text,
   placeHolderText,
   setText,
+  value,
 }: {
   text: string;
   placeHolderText: string;
-  setText: (p: string) => void;
+  setText: (_p: string) => void;
+  value: string;
 }) => {
   return (
     <Stack gap={"4px"}>
@@ -25,6 +27,7 @@ export const TextInput = ({
         sx={{ backgroundColor: "#F7F7F8" }}
       >
         <InputBase
+          value={value}
           sx={{
             ml: 1,
             flex: 1,
@@ -49,7 +52,7 @@ export const PassWordInput = ({
   const [type, setType] = useState("password");
 
   const HandlerType = () => {
-    setType("password" ? "text" : "password");
+    setType(type == "password" ? "text" : "password");
   };
 
   return (
@@ -74,7 +77,11 @@ export const PassWordInput = ({
           type={type}
         />
         <ButtonBase onClick={() => HandlerType()}>
-          <HideIcon />
+          {type == "password" ? (
+            <HiddenEyeIcon size={"24px"} />
+          ) : (
+            <EyeIcon size={"24px"} />
+          )}
         </ButtonBase>
       </Box>
     </Stack>

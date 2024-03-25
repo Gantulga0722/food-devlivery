@@ -39,6 +39,7 @@ export const LoginComp = () => {
               text={"Имэйл"}
               placeHolderText={"Имэйл хаягаа оруулна уу"}
               setText={setText}
+              value={text}
             />
             <PassWordInput text={"Нууц үг"} placeHolderText={"Нууц үг"} />
           </Stack>

@@ -3,10 +3,11 @@ import { LoginButton } from "@/components/buttons";
 import { TextInput, PassWordInput } from "@/components/inputs";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-// import { useState } from "react";
+import { useState } from "react";
 // import { v4 as uuidv4 } from "uuid";
 
 export const SignUpComp = () => {
+  const [text, setText] = useState("");
   // const BE_URL = "http://localhost:4000/signup";
   // const [userName, setUserName] = useState("");
   // const [userEmail, setUserEmail] = useState("");
@@ -51,12 +52,24 @@ export const SignUpComp = () => {
       </Stack>
       <Stack gap={"8px"} width={"384px"}>
         <Stack gap={"16px"}>
-          <TextInput text={"Нэр"} placeHolderText={"Нэрээ оруулна уу"} />
+          <TextInput
+            text={"Нэр"}
+            placeHolderText={"Нэрээ оруулна уу"}
+            value={text}
+            setText={setText}
+          />
           <TextInput
             text={"Имэйл"}
             placeHolderText={"И-мэйл хаягаа оруулна уу"}
+            value={text}
+            setText={setText}
           />
-          <TextInput text={"Хаяг"} placeHolderText={"Та хаягаа оруулна уу"} />
+          <TextInput
+            text={"Хаяг"}
+            placeHolderText={"Та хаягаа оруулна уу"}
+            value={text}
+            setText={setText}
+          />
           <PassWordInput
             text={"Нууц үг"}
             placeHolderText={"Нууц үгээ оруулна уу"}
@@ -65,13 +78,6 @@ export const SignUpComp = () => {
             text={"Нууц үг давтах"}
             placeHolderText={"Нууц үгээ оруулна уу"}
           />
-        </Stack>
-        <Stack justifyContent={"flex-end"} alignItems={"flex-end"}>
-          <ButtonBase onClick={() => {}}>
-            <Typography fontSize={"14px"} fontWeight={400} color={"#3F4145"}>
-              Нууц үг сэргээх
-            </Typography>
-          </ButtonBase>
         </Stack>
       </Stack>
       <Stack
