@@ -8,7 +8,6 @@ import {
 import { Container, Stack } from "@mui/material";
 import { HomeSection } from "@/components/home/Section";
 import { CategoryData, CardDataFood } from "@/utils/dummy-data-cards";
-// import { useState } from "react";
 
 const Home = () => {
   return (
@@ -28,14 +27,16 @@ const Home = () => {
       >
         <HomeDescktopComp />
         <Container maxWidth={"xl"} sx={{ width: "1306px" }}>
-          <Stack>
-            <HomeInfo />
+          <HomeInfo />
+          <Stack gap={"80px"}>
             {CategoryData.map((cat, index) => {
               const fourFoods = CardDataFood.filter(
                 (food) => food.category == cat.name
               ).slice(0, 4);
               return (
-                <HomeSection key={index} title={cat.name} foods={fourFoods} />
+                <Stack key={index} gap={"80px"}>
+                  <HomeSection title={cat.name} food={fourFoods} />
+                </Stack>
               );
             })}
           </Stack>

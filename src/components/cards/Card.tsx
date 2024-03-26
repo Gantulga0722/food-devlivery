@@ -1,16 +1,17 @@
 import { ButtonBase, Stack, Typography } from "@mui/material";
 type PropType = {
   food: {
-    image: string;
-    saleProcent: number;
     name: string;
     price: number;
-    onClick: () => void;
+    image: string;
+    saleProcent: number;
+    category: string;
+    onClick?: (() => void | undefined) | undefined;
   };
 };
 export const FoodCard = ({ food }: PropType) => {
   const { image, saleProcent, name, price, onClick } = food;
-  const salePrice = (price * saleProcent) / 100;
+  const salePrice = price - (price * saleProcent) / 100;
   return (
     <ButtonBase onClick={onClick}>
       <Stack gap={"14px"}>
@@ -28,7 +29,7 @@ export const FoodCard = ({ food }: PropType) => {
           }}
           position={"relative"}
         >
-          {saleProcent ? (
+          {saleProcent > 0 ? (
             <Stack
               padding={"4px 16px"}
               justifyContent={"center"}
@@ -44,7 +45,7 @@ export const FoodCard = ({ food }: PropType) => {
               right={"16px"}
             >
               <Typography fontSize={"18px"} fontWeight={600} color={"white"}>
-                {saleProcent}
+                {saleProcent}%
               </Typography>
             </Stack>
           ) : (
@@ -62,14 +63,14 @@ export const FoodCard = ({ food }: PropType) => {
             <Typography fontSize={"18px"} fontWeight={600} color={"#18BA51"}>
               {salePrice}₮
             </Typography>
-            {saleProcent ? (
+            {saleProcent > 0 ? (
               <Typography
                 fontSize={"18px"}
                 fontWeight={400}
                 color={"#272727"}
                 sx={{ textDecoration: "line-through" }}
               >
-                {price}
+                {price}₮
               </Typography>
             ) : (
               <Typography></Typography>
