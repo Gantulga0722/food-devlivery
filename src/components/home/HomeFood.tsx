@@ -1,29 +1,51 @@
-import { Stack } from "@mui/material";
-import { CardDataFood, CategoryData } from "@/utils/dummy-data-cards";
-import { FoodCardCategory, FoodCard } from "@/components/cards";
+import { ButtonBase, Stack, Typography } from "@mui/material";
+import { CategoryIcon } from "../icons";
+import { FoodCard } from "../cards";
 
-const filterBySale = CardDataFood.filter(
-  (food, index) => food.category == "Хямдралтай" && index <= 3
-);
-// const filterByMain = CardDataFood.filter(
-//   (food, index) => food.category == "Үндсэн хоол" && index <= 3
-// );
-// const filterBySalad = CardDataFood.filter(
-//   (food, index) => food.category == "Салад ба зууш" && index <= 3
-// );
-// const filterByDisert = CardDataFood.filter(
-//   (food, index) => food.category == "Амттан" && index <= 3
-// );
-
-export const HomeFood = () => {
+export const HomeSection = ({
+  title,
+  foods,
+}: {
+  title: string;
+  foods: any[];
+}) => {
   return (
-    <Stack gap={"80px"}>
-      {CategoryData.map((cate, index) => (
-        <Stack key={index} gap={"24px"}>
-          <FoodCardCategory category={cate.name} />
-          <FoodCard filteredData={filterBySale} />
+    <Stack direction={"column"}>
+      <Stack
+        paddingY={"16px"}
+        justifyContent={"space-between"}
+        direction={"row"}
+        alignItems={"center"}
+      >
+        <Stack direction={"row"} alignItems={"center"}>
+          <CategoryIcon />
+          <Stack height={"30px"}>
+            <Typography fontSize={"22px"} fontWeight={700} color={"#272727"}>
+              {title}
+            </Typography>
+          </Stack>
         </Stack>
-      ))}
+        <ButtonBase onClick={() => {}}>
+          <Stack gap={"5px"} direction={"row"}>
+            <Stack width={"109px"} height={"30px"} justifyContent={"center"}>
+              <Typography fontSize={"14px"} fontWeight={400} color={"#18BA51"}>
+                Бүгдийг харах
+              </Typography>
+            </Stack>
+            <Stack width={"15px"} height={"30px"} justifyContent={"center"}>
+              <Typography fontSize={"14px"} fontWeight={400} color={"#18BA51"}>
+                {">"}
+              </Typography>
+            </Stack>
+          </Stack>
+        </ButtonBase>
+      </Stack>
+
+      <Stack>
+        {foods.map((food, index) => (
+          <FoodCard key={index} food={food} />
+        ))}
+      </Stack>
     </Stack>
   );
 };

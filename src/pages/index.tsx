@@ -3,11 +3,12 @@ import * as React from "react";
 import {
   HomeDescktopComp,
   HomeInfo,
-  HomeFood,
-  HomeFoodsByCt,
+  // HomeFoodsByCt,
 } from "@/components/home";
 import { Container, Stack } from "@mui/material";
-import { useState } from "react";
+import { HomeSection } from "@/components/home/Section";
+import { CategoryData, CardDataFood } from "@/utils/dummy-data-cards";
+// import { useState } from "react";
 
 const Home = () => {
   return (
@@ -29,10 +30,14 @@ const Home = () => {
         <Container maxWidth={"xl"} sx={{ width: "1306px" }}>
           <Stack>
             <HomeInfo />
-            <HomeFood />
-          </Stack>
-          <Stack>
-            <HomeFoodsByCt />
+            {CategoryData.map((cat, index) => {
+              const fourFoods = CardDataFood.filter(
+                (food) => food.category == cat.name
+              ).slice(0, 4);
+              return (
+                <HomeSection key={index} title={cat.name} foods={fourFoods} />
+              );
+            })}
           </Stack>
         </Container>
       </Stack>

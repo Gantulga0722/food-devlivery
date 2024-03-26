@@ -35,11 +35,7 @@ export const FoodCardCategory = ({ category }: { category: string }) => {
   );
 };
 
-export const FoodCard = ({
-  filteredData,
-}: {
-  filteredData: filteredData[];
-}) => {
+export const FoodCardA = ({ filteredData }: { filteredData: any[] }) => {
   return (
     <Stack direction={"row"} justifyContent={"space-between"}>
       {filteredData.map((data, index) => (
