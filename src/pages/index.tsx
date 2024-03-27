@@ -11,6 +11,16 @@ import { Container, Stack } from "@mui/material";
 // import { CategoryData, CardDataFood } from "@/utils/dummy-data-cards";
 
 const Home = () => {
+  // const dataFetch = async (url: string) => {
+  //   let data = await fetch(url);
+  //   let newData = await data.json();
+
+  //   console.log("newDAta", newData[0]);
+  //   return newData;
+  // };
+
+  // dataFetch("./utils/dummyData.json");
+
   return (
     <>
       <Head>
