@@ -1,11 +1,12 @@
-import { useState,
+import React, {
+  useState,
   createContext,
-  useContext,
+  Dispatch,
   SetStateAction,
-  Dispatch,} from 
-"react";
+  useEffect,
+} from "react";
 
-interface FoodType {
+interface IFoodType {
   id: number;
   foodName: string;
   price: number;
@@ -15,36 +16,40 @@ interface FoodType {
   sale: number;
 }
 
-const basketFoodPrimer: FoodType[] = [];
-
-interface FoodPropsContextType {
-  allFood: FoodType[];
-  setAllfood: Dispatch<SetStateAction<FoodType[]>>;
+interface IFoodPropsContextType {
+  allFood: IFoodType[];
+  setAllFood: Dispatch<SetStateAction<IFoodType[]>>;
 }
 
-const dataFetch = async (url: string) => {
-    let data = await fetch(url);
-    let newData = await data.json();
-
-    console.log(typeof newData);
-    return newData[0];
-};
-
-dataFetch("/utils/dummyData.json");
-
-const FoodContext = createContext<FoodPropsContextType>({
-
-    allFood:  dataFetch("/utils/dummyData.json"),
-    setAllFood: ()=>{}
-
+const FoodContext = createContext<IFoodPropsContextType>({
+  allFood: [],
+  setAllFood: () => {},
 });
 
-const FoodContextProvider = ({ children }: React.ReactNode) => {
+const FoodContextProvider = ({ children }: { children: React.ReactNode }) => {
+  const [allFood, setAllFood] = useState<IFoodType[]>([]);
 
-  const [allFood, setAllfood] = useState();
-  const [basketFood, setBasketFood] = useState();
+  // Fetch data asynchronously and update the state
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch("/utils/dummyData.json"); // Update the URL to match the location of your JSON file
+        const data = await response.json();
+        setAllFood(data);
+        console.log("food data", data);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
+    };
 
-  return <FoodContext.Provider value={{allFood, setAllfood}}>{children}</FoodContext.Provider>;
+    fetchData();
+  }, []); // Empty dependency array ensures the effect runs only once
+
+  return (
+    <FoodContext.Provider value={{ allFood, setAllFood }}>
+      {children}
+    </FoodContext.Provider>
+  );
 };
 
-export { FoodContextProvider };
+export { FoodContext, FoodContextProvider };

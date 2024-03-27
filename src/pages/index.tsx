@@ -6,21 +6,15 @@ import {
   // HomeFoodsByCt,
 } from "@/components/home";
 import { Container, Stack } from "@mui/material";
+// import { FoodContext } from "@/components/context/Context";
 
 // import { HomeSection } from "@/components/home/Section";
 // import { CategoryData, CardDataFood } from "@/utils/dummy-data-cards";
 
 const Home = () => {
-  // const dataFetch = async (url: string) => {
-  //   let data = await fetch(url);
-  //   let newData = await data.json();
+  // const { allFood } = React.useContext(FoodContext); // Using useContext to access context values
 
-  //   console.log("newDAta", newData[0]);
-  //   return newData;
-  // };
-
-  // dataFetch("./utils/dummyData.json");
-
+  // console.log("allFood", allFood);
   return (
     <>
       <Head>
