@@ -6,8 +6,9 @@ import {
   // HomeFoodsByCt,
 } from "@/components/home";
 import { Container, Stack } from "@mui/material";
-import { HomeSection } from "@/components/home/Section";
-import { CategoryData, CardDataFood } from "@/utils/dummy-data-cards";
+
+// import { HomeSection } from "@/components/home/Section";
+// import { CategoryData, CardDataFood } from "@/utils/dummy-data-cards";
 
 const Home = () => {
   return (
@@ -28,7 +29,8 @@ const Home = () => {
         <HomeDescktopComp />
         <Container maxWidth={"xl"} sx={{ width: "1306px" }}>
           <HomeInfo />
-          <Stack gap={"80px"}>
+
+          {/* <Stack gap={"80px"}>
             {CategoryData.map((cat, index) => {
               const fourFoods = CardDataFood.filter(
                 (food) => food.category == cat.name
@@ -39,7 +41,7 @@ const Home = () => {
                 </Stack>
               );
             })}
-          </Stack>
+          </Stack> */}
         </Container>
       </Stack>
     </>
