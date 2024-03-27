@@ -6,7 +6,7 @@ import React, {
   useEffect,
 } from "react";
 
-interface IFoodType {
+interface FoodType {
   id: number;
   foodName: string;
   price: number;
@@ -16,24 +16,25 @@ interface IFoodType {
   sale: number;
 }
 
-interface IFoodPropsContextType {
-  allFood: IFoodType[];
-  setAllFood: Dispatch<SetStateAction<IFoodType[]>>;
+interface FoodPropsContextType {
+  allFood: FoodType[];
+  setAllFood: Dispatch<SetStateAction<FoodType[]>>;
 }
 
-const FoodContext = createContext<IFoodPropsContextType>({
+const FoodContext = createContext<FoodPropsContextType>({
   allFood: [],
   setAllFood: () => {},
 });
 
 const FoodContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [allFood, setAllFood] = useState<IFoodType[]>([]);
+  const [allFood, setAllFood] = useState<FoodType[]>([]);
 
-  // Fetch data asynchronously and update the state
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch("/utils/dummyData.json"); // Update the URL to match the location of your JSON file
+        const response = await fetch(
+          "http://localhost:4000/api/dummyData.json"
+        );
         const data = await response.json();
         setAllFood(data);
         console.log("food data", data);
@@ -43,7 +44,7 @@ const FoodContextProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     fetchData();
-  }, []); // Empty dependency array ensures the effect runs only once
+  }, []);
 
   return (
     <FoodContext.Provider value={{ allFood, setAllFood }}>
