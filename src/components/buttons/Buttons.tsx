@@ -1,4 +1,4 @@
-import { Stack, Typography } from "@mui/material";
+import { ButtonBase, Stack, Typography } from "@mui/material";
 
 export const HeaderButton = ({ text }: { text: string }) => {
   return (
@@ -32,7 +32,6 @@ export const LoginButton = ({ text }: { text: string }) => {
   return (
     <Stack
       border={"1px solid #ECEDF0"}
-      display={"flex"}
       height={"48px"}
       padding={"8px 16px"}
       borderRadius={"4px"}
@@ -51,5 +50,37 @@ export const LoginButton = ({ text }: { text: string }) => {
     >
       {text}
     </Stack>
+  );
+};
+
+export const MenuButton = ({
+  text,
+  onClick,
+}: {
+  text: string;
+  onClick: () => void;
+}) => {
+  return (
+    <ButtonBase onClick={onClick}>
+      <Stack
+        width={"280px"}
+        border={"1px solid #D6D8DB"}
+        borderRadius={"8px"}
+        padding={"8px 16px"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        sx={{
+          backgroundColor: "#FFF",
+          fontWeight: 500,
+          "&:hover": {
+            borderColor: "#FFF",
+            color: "#FFF",
+            backgroundColor: "#18BA51",
+          },
+        }}
+      >
+        {text}
+      </Stack>
+    </ButtonBase>
   );
 };

@@ -1,20 +1,17 @@
 import Head from "next/head";
 import * as React from "react";
-import {
-  HomeDescktopComp,
-  HomeInfo,
-  // HomeFoodsByCt,
-} from "@/components/home";
+import { HomeDescktopComp, HomeInfo } from "@/components/home";
 import { Container, Stack } from "@mui/material";
 import { useFood } from "@/components/context/Context";
 
 import { HomeSection } from "@/components/home/Section";
 import { CategoryData } from "@/utils/dummy-data-cards";
+import { HomeSaleSec } from "@/components/home/HomeSaleSec";
 
 const Home = () => {
   const { allFood } = useFood();
+  const saleFoods = allFood.filter((food) => food.sale > 0).slice(0, 4);
 
-  console.log("allFood", allFood);
   return (
     <>
       <Head>
@@ -35,9 +32,10 @@ const Home = () => {
           <HomeInfo />
 
           <Stack gap={"80px"}>
+            <HomeSaleSec title="Хямдралтай" saleFoods={saleFoods} />
             {CategoryData.map((cat, index) => {
               const fourFoods = allFood
-                .filter((food) => food.category == cat.name)
+                .filter((food) => food.category == cat.name && food.sale == 0)
                 .slice(0, 4);
               return (
                 <Stack key={index} gap={"80px"}>

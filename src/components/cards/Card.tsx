@@ -16,9 +16,8 @@ export const FoodCard = ({ food }: PropType) => {
   const { foodName, price, imagePath, sale, onClick } = food;
   const salePrice = price - (price * sale) / 100;
   return (
-    // <Stack display={sale == 0 ? "flex" : "none"}>
     <ButtonBase onClick={onClick}>
-      <Stack gap={"14px"}>
+      <Stack gap={"14px"} marginTop={"30px"}>
         <Stack
           width={"282px"}
           height={"186px"}
@@ -83,6 +82,5 @@ export const FoodCard = ({ food }: PropType) => {
         </Stack>
       </Stack>
     </ButtonBase>
-    // </Stack>
   );
 };

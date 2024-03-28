@@ -41,7 +41,6 @@ const FoodContextProvider = ({ children }: { children: React.ReactNode }) => {
         const response = await fetch("./dummyData.json");
         const data = await response.json();
         setAllFood(data);
-        console.log("food data", data);
       } catch (error) {
         console.error("Error fetching data:", error);
       }
