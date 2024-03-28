@@ -1,18 +1,22 @@
 import { ButtonBase, Stack, Typography } from "@mui/material";
 type PropType = {
   food: {
-    name: string;
-    price: number;
-    image: string;
-    saleProcent: number;
     category: string;
+    id: number;
+    foodName: string;
+    price: number;
+    imagePath: string;
+    ingredients: string[];
+    stock: number;
+    sale: number;
     onClick?: (() => void | undefined) | undefined;
   };
 };
 export const FoodCard = ({ food }: PropType) => {
-  const { image, saleProcent, name, price, onClick } = food;
-  const salePrice = price - (price * saleProcent) / 100;
+  const { foodName, price, imagePath, sale, onClick } = food;
+  const salePrice = price - (price * sale) / 100;
   return (
+    // <Stack display={sale == 0 ? "flex" : "none"}>
     <ButtonBase onClick={onClick}>
       <Stack gap={"14px"}>
         <Stack
@@ -23,13 +27,13 @@ export const FoodCard = ({ food }: PropType) => {
             "0px 3px 6px -2px rgba(0, 0, 0, 0.10), 0px 6px 10px 0px rgba(0, 0, 0, 0.07)"
           }
           sx={{
-            backgroundImage: `URL(${image})`,
+            backgroundImage: `URL(${imagePath})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
           position={"relative"}
         >
-          {saleProcent > 0 ? (
+          {sale > 0 ? (
             <Stack
               padding={"4px 16px"}
               justifyContent={"center"}
@@ -45,7 +49,7 @@ export const FoodCard = ({ food }: PropType) => {
               right={"16px"}
             >
               <Typography fontSize={"18px"} fontWeight={600} color={"white"}>
-                {saleProcent}%
+                {sale}%
               </Typography>
             </Stack>
           ) : (
@@ -55,7 +59,7 @@ export const FoodCard = ({ food }: PropType) => {
         <Stack width={"282px"} gap={"2px"}>
           <Stack alignItems={"flex-start"}>
             <Typography fontSize={"18px"} fontWeight={600} color={"#000"}>
-              {name}
+              {foodName}
             </Typography>
           </Stack>
 
@@ -63,7 +67,7 @@ export const FoodCard = ({ food }: PropType) => {
             <Typography fontSize={"18px"} fontWeight={600} color={"#18BA51"}>
               {salePrice}₮
             </Typography>
-            {saleProcent > 0 ? (
+            {sale > 0 ? (
               <Typography
                 fontSize={"18px"}
                 fontWeight={400}
@@ -79,5 +83,6 @@ export const FoodCard = ({ food }: PropType) => {
         </Stack>
       </Stack>
     </ButtonBase>
+    // </Stack>
   );
 };

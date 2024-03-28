@@ -4,9 +4,11 @@ import React, {
   Dispatch,
   SetStateAction,
   useEffect,
+  useContext,
 } from "react";
 
 interface FoodType {
+  category: string;
   id: number;
   foodName: string;
   price: number;
@@ -21,10 +23,14 @@ interface FoodPropsContextType {
   setAllFood: Dispatch<SetStateAction<FoodType[]>>;
 }
 
-const FoodContext = createContext<FoodPropsContextType>({
+const foodContext = createContext<FoodPropsContextType>({
   allFood: [],
   setAllFood: () => {},
 });
+
+const useFood = () => {
+  return useContext(foodContext);
+};
 
 const FoodContextProvider = ({ children }: { children: React.ReactNode }) => {
   const [allFood, setAllFood] = useState<FoodType[]>([]);
@@ -32,9 +38,7 @@ const FoodContextProvider = ({ children }: { children: React.ReactNode }) => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await fetch(
-          "http://localhost:4000/api/dummyData.json"
-        );
+        const response = await fetch("./dummyData.json");
         const data = await response.json();
         setAllFood(data);
         console.log("food data", data);
@@ -47,10 +51,10 @@ const FoodContextProvider = ({ children }: { children: React.ReactNode }) => {
   }, []);
 
   return (
-    <FoodContext.Provider value={{ allFood, setAllFood }}>
+    <foodContext.Provider value={{ allFood, setAllFood }}>
       {children}
-    </FoodContext.Provider>
+    </foodContext.Provider>
   );
 };
 
-export { FoodContext, FoodContextProvider };
+export { foodContext, FoodContextProvider, useFood };

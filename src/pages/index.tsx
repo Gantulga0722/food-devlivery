@@ -6,15 +6,15 @@ import {
   // HomeFoodsByCt,
 } from "@/components/home";
 import { Container, Stack } from "@mui/material";
-// import { FoodContext } from "@/components/context/Context";
+import { useFood } from "@/components/context/Context";
 
-// import { HomeSection } from "@/components/home/Section";
-// import { CategoryData, CardDataFood } from "@/utils/dummy-data-cards";
+import { HomeSection } from "@/components/home/Section";
+import { CategoryData } from "@/utils/dummy-data-cards";
 
 const Home = () => {
-  // const { allFood } = React.useContext(FoodContext); // Using useContext to access context values
+  const { allFood } = useFood();
 
-  // console.log("allFood", allFood);
+  console.log("allFood", allFood);
   return (
     <>
       <Head>
@@ -34,18 +34,18 @@ const Home = () => {
         <Container maxWidth={"xl"} sx={{ width: "1306px" }}>
           <HomeInfo />
 
-          {/* <Stack gap={"80px"}>
+          <Stack gap={"80px"}>
             {CategoryData.map((cat, index) => {
-              const fourFoods = CardDataFood.filter(
-                (food) => food.category == cat.name
-              ).slice(0, 4);
+              const fourFoods = allFood
+                .filter((food) => food.category == cat.name)
+                .slice(0, 4);
               return (
                 <Stack key={index} gap={"80px"}>
                   <HomeSection title={cat.name} food={fourFoods} />
                 </Stack>
               );
             })}
-          </Stack> */}
+          </Stack>
         </Container>
       </Stack>
     </>
