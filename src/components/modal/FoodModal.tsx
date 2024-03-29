@@ -1,7 +1,9 @@
 import * as React from "react";
 import { Stack, Modal, Typography, Button } from "@mui/material";
-import { ModalPmButtons } from "./ModalPMButtons";
+import { ModalPmButtons } from "./ModalPmButtons";
 import { ModalBaskButton } from "../buttons";
+import { useBag } from "@/components/context/BagContext";
+import { useState } from "react";
 
 const style = {
   position: "absolute" as "absolute",
@@ -23,14 +25,23 @@ export const FoodModal = ({
   onClose: (_e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
   food: any;
 }) => {
-  const [count, setCount] = React.useState(1);
+  const { bagItem, setBagItem } = useBag();
+
+  console.log("bag Item", bagItem);
+
+  const [bagCount, setBagCount] = useState(1);
   const { foodName, price, imagePath, sale, ingredients } = food;
+
+  const HadlerDataToBag = () => {
+    setBagItem(food);
+  };
+
   const salePrice = price - (price * sale) / 100;
   const subHandle = () => {
-    count < 1 ? setCount(count) : setCount(count - 1);
+    bagCount < 1 ? setBagCount(bagCount) : setBagCount(bagCount - 1);
   };
   const sumHandle = () => {
-    setCount(count + 1);
+    setBagCount(bagCount + 1);
   };
 
   return (
@@ -146,9 +157,9 @@ export const FoodModal = ({
             <ModalPmButtons
               subHandle={subHandle}
               sumHandle={sumHandle}
-              value={count}
+              value={bagCount}
             />
-            <ModalBaskButton onClick={() => {}} />
+            <ModalBaskButton clickFunc={() => HadlerDataToBag()} />
           </Stack>
         </Stack>
       </Modal>

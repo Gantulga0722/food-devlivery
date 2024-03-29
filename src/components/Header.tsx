@@ -1,5 +1,5 @@
 import * as React from "react";
-import { PineConeIcon, BascketIcon, LoginIcon } from "./icons/Icons";
+import { PineConeIcon, LoginIcon } from "./icons/Icons";
 import {
   Box,
   IconButton,
@@ -12,6 +12,7 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import { useRouter } from "next/router";
 import { HeaderButton } from "@/components/buttons";
+import { TemporaryDrawer } from "./modal/BagModal";
 
 export const Header = () => {
   const router = useRouter();
@@ -86,7 +87,7 @@ export const Header = () => {
               justifyContent: "flex-end",
             }}
           >
-            <BascketIcon />
+            <TemporaryDrawer />
             <Typography
               sx={{ fontSize: "14px", fontWeight: 700, color: "black" }}
             >

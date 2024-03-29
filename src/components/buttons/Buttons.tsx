@@ -85,9 +85,9 @@ export const MenuButton = ({
   );
 };
 
-export const ModalBaskButton = ({ onClick }: { onClick: () => void }) => {
+export const ModalBaskButton = ({ clickFunc }: { clickFunc: () => void }) => {
   return (
-    <ButtonBase onClick={onClick}>
+    <ButtonBase onClick={clickFunc}>
       <Stack
         width={"384px"}
         height={"48px"}
