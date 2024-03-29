@@ -1,4 +1,7 @@
 import { ButtonBase, Stack, Typography } from "@mui/material";
+import React, { useState } from "react";
+import { FoodModal } from "../modal/FoodModal";
+
 type PropType = {
   food: {
     category: string;
@@ -13,11 +16,23 @@ type PropType = {
   };
 };
 export const FoodCard = ({ food }: PropType) => {
-  const { foodName, price, imagePath, sale, onClick } = food;
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { foodName, price, imagePath, sale } = food;
   const salePrice = price - (price * sale) / 100;
+
+  const onCloseModal = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.stopPropagation();
+    console.log();
+    setIsModalOpen(false);
+  };
+  const onOpenModal = (e: any) => {
+    e.stopPropagation();
+    setIsModalOpen(true);
+  };
   return (
-    <ButtonBase onClick={onClick}>
+    <ButtonBase onClick={onOpenModal}>
       <Stack gap={"14px"} marginTop={"30px"}>
+        <FoodModal isOpen={isModalOpen} onClose={onCloseModal} food={food} />
         <Stack
           width={"282px"}
           height={"186px"}

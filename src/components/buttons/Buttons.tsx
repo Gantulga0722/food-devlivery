@@ -84,3 +84,27 @@ export const MenuButton = ({
     </ButtonBase>
   );
 };
+
+export const ModalBaskButton = ({ onClick }: { onClick: () => void }) => {
+  return (
+    <ButtonBase onClick={onClick}>
+      <Stack
+        width={"384px"}
+        height={"48px"}
+        border={"1px solid #D6D8DB"}
+        borderRadius={"4px"}
+        padding={"8px 16px"}
+        justifyContent={"center"}
+        alignItems={"center"}
+        color={"#FFF"}
+        sx={{
+          backgroundColor: "#18BA51",
+          fontWeight: 400,
+          fontSize: "16px",
+        }}
+      >
+        Сагслах
+      </Stack>
+    </ButtonBase>
+  );
+};

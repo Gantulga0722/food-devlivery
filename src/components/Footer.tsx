@@ -55,7 +55,7 @@ export const Footer = () => {
             <ButtonBase>
               <FooterButton text={"Холбоо барих"} />
             </ButtonBase>
-            <ButtonBase>
+            <ButtonBase onClick={() => router.push("/menu")}>
               <FooterButton text={"Хоолны цэс"} />
             </ButtonBase>
             <ButtonBase>
