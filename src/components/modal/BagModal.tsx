@@ -3,16 +3,20 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import List from "@mui/material/List";
-import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import { ButtonBase, Stack, Typography } from "@mui/material";
-import { BagIcon } from "../icons";
+import { BagIcon, BascketIcon } from "../icons";
 import { useBag } from "../context/BagContext";
 import { ModalPmButtons } from "./ModalPmButtons";
+import { useRouter } from "next/router";
 
 export const TemporaryDrawer = () => {
+  const router = useRouter();
+
   const { bagItem } = useBag();
+
+  console.log("bag Item", bagItem);
 
   const [open, setOpen] = React.useState(false);
 
@@ -37,7 +41,6 @@ export const TemporaryDrawer = () => {
           gap={"171px"}
           alignItems={"center"}
           direction={"row"}
-          height={"60px"}
         >
           <Stack
             width={"48px"}
@@ -87,9 +90,26 @@ export const TemporaryDrawer = () => {
                   <Stack></Stack>
                 </Stack>
                 <Stack gap={"4px"}>
-                  {food.ingredients.map((ingr, index) => (
-                    <Typography key={index}>{ingr}</Typography>
-                  ))}
+                  {food.ingredients.map(
+                    (
+                      ingr:
+                        | string
+                        | number
+                        | boolean
+                        | React.ReactElement<
+                            any,
+                            string | React.JSXElementConstructor<any>
+                          >
+                        | Iterable<React.ReactNode>
+                        | React.ReactPortal
+                        | Promise<React.AwaitedReactNode>
+                        | null
+                        | undefined,
+                      index: React.Key | null | undefined
+                    ) => (
+                      <Typography key={index}>{ingr}</Typography>
+                    )
+                  )}
                 </Stack>
                 <Stack>
                   <ModalPmButtons
@@ -121,7 +141,7 @@ export const TemporaryDrawer = () => {
               Total Price will be here
             </Typography>
           </Stack>
-          <ButtonBase>
+          <ButtonBase onClick={() => router.push("/order")}>
             <Stack
               width={"256px"}
               height={"48px"}
@@ -144,8 +164,8 @@ export const TemporaryDrawer = () => {
   return (
     <Stack sx={{ backgroundColor: "#FFF" }}>
       <Button onClick={toggleDrawer(true)}>
-        <StyledBadge badgeContent={4} color="secondary">
-          <ShoppingCartIcon />
+        <StyledBadge badgeContent={bagItem.length} color="success">
+          <BascketIcon />
         </StyledBadge>
       </Button>
       <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>

@@ -18,6 +18,8 @@ interface BagItemType {
   count: number;
 }
 
+const BagItemInitial: BagItemType[] = [];
+
 interface BagPropsContextType {
   bagItem: BagItemType[];
   setBagItem: Dispatch<SetStateAction<BagItemType[]>>;
@@ -37,7 +39,7 @@ const BagItemContextProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [bagItem, setBagItem] = useState<BagItemType[]>([]);
+  const [bagItem, setBagItem] = useState<BagItemType[]>(BagItemInitial);
 
   return (
     <BagItemContext.Provider value={{ bagItem, setBagItem }}>

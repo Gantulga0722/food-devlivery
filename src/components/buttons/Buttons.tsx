@@ -85,9 +85,20 @@ export const MenuButton = ({
   );
 };
 
-export const ModalBaskButton = ({ clickFunc }: { clickFunc: () => void }) => {
+export const ModalBaskButton = ({
+  clickFunc,
+  onClose,
+}: {
+  clickFunc: () => void;
+  onClose: (_e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
+}) => {
   return (
-    <ButtonBase onClick={clickFunc}>
+    <ButtonBase
+      onClick={() => {
+        clickFunc();
+        onClose;
+      }}
+    >
       <Stack
         width={"384px"}
         height={"48px"}

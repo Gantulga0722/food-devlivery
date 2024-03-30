@@ -19,6 +19,7 @@
     "eslint-plugin-promise": "^6.1.1",
     "eslint-plugin-unicorn": "^51.0.1",
     "jsonc-eslint-parser": "^2.4.0",
+    "localforage": "^1.10.0",
     "next": "14.1.4",
     "react": "^18",
     "react-dom": "^18",

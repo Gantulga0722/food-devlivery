@@ -27,13 +27,24 @@ export const FoodModal = ({
 }) => {
   const { bagItem, setBagItem } = useBag();
 
-  console.log("bag Item", bagItem);
-
   const [bagCount, setBagCount] = useState(1);
-  const { foodName, price, imagePath, sale, ingredients } = food;
+  const { foodName, price, imagePath, sale, ingredients, category, id, stock } =
+    food;
 
   const HadlerDataToBag = () => {
-    setBagItem(food);
+    const itemInBag = {
+      category: category,
+      id: id,
+      foodName: foodName,
+      price: price,
+      imagePath: imagePath,
+      ingredients: ingredients,
+      stock: stock,
+      sale: sale,
+      count: bagCount,
+    };
+
+    setBagItem([...bagItem, itemInBag]);
   };
 
   const salePrice = price - (price * sale) / 100;
@@ -159,7 +170,7 @@ export const FoodModal = ({
               sumHandle={sumHandle}
               value={bagCount}
             />
-            <ModalBaskButton clickFunc={() => HadlerDataToBag()} />
+            <ModalBaskButton clickFunc={HadlerDataToBag} onClose={onClose} />
           </Stack>
         </Stack>
       </Modal>
