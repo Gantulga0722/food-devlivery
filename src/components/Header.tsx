@@ -13,9 +13,12 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useRouter } from "next/router";
 import { HeaderButton } from "@/components/buttons";
 import { TemporaryDrawer } from "./modal/BagModal";
+import { useBag } from "./context/BagContext";
 
 export const Header = () => {
   const router = useRouter();
+  const { bagItem } = useBag();
+  console.log(bagItem);
   return (
     <Stack
       direction={"row"}

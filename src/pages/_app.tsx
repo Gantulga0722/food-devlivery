@@ -6,13 +6,13 @@ import { BagItemContextProvider } from "@/components/context/BagContext";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
-    <Layout>
+    <BagItemContextProvider>
       <FoodContextProvider>
-        <BagItemContextProvider>
+        <Layout>
           <Component {...pageProps} />
-        </BagItemContextProvider>
+        </Layout>
       </FoodContextProvider>
-    </Layout>
+    </BagItemContextProvider>
   );
 };
 

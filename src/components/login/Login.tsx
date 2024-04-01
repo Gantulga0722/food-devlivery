@@ -13,7 +13,28 @@ export const LoginComp = () => {
     setComponent("password");
   };
 
+  const BE_URL = "http://localhost:4000/login";
+  const [userEmail, setUserEmail] = useState("");
+  const [userPassword, setPassword] = useState("");
   const router = useRouter();
+
+  const handleLoginUser = async () => {
+    const data = {
+      email: userEmail,
+      password: userPassword,
+    };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const FETCHED_DATA = await fetch(BE_URL, options);
+    const FETCHED_JSON = await FETCHED_DATA.json();
+    console.log("fethc", FETCHED_JSON);
+  };
+
   return (
     <Stack>
       <Stack display={`${component == "login" ? "none" : "flex"}`}>
@@ -40,8 +61,13 @@ export const LoginComp = () => {
               placeHolderText={"Имэйл хаягаа оруулна уу"}
               setText={setText}
               value={text}
+              setFunction={setUserEmail}
             />
-            <PassWordInput text={"Нууц үг"} placeHolderText={"Нууц үг"} />
+            <PassWordInput
+              text={"Нууц үг"}
+              placeHolderText={"Нууц үг"}
+              setFunction={setPassword}
+            />
           </Stack>
           <Stack justifyContent={"flex-end"} alignItems={"flex-end"}>
             <ButtonBase
@@ -59,7 +85,7 @@ export const LoginComp = () => {
           alignItems={"center"}
         >
           <Stack>
-            <ButtonBase onClick={() => {}}>
+            <ButtonBase onClick={() => handleLoginUser}>
               <LoginButton text={"Нэвтрэх"} />
             </ButtonBase>
           </Stack>

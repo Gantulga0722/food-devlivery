@@ -1,6 +1,6 @@
 import { Box, Typography, InputBase, Stack, ButtonBase } from "@mui/material";
 import { EyeIcon, HiddenEyeIcon, LocationIcon } from "../icons";
-import { useState } from "react";
+import { Dispatch, SetStateAction, useState } from "react";
 import * as React from "react";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -12,11 +12,13 @@ export const TextInput = ({
   placeHolderText,
   setText,
   value,
+  setFunction,
 }: {
   text: string;
   placeHolderText: string;
   setText: (_p: string) => void;
   value: string;
+  setFunction: Dispatch<SetStateAction<string>>;
 }) => {
   return (
     <Stack gap={"4px"}>
@@ -40,6 +42,7 @@ export const TextInput = ({
           placeholder={placeHolderText}
           onChange={(e) => {
             setText(`${e.target.value}`);
+            setFunction(`${e.target.value}`);
           }}
         />
       </Box>
@@ -50,9 +53,11 @@ export const TextInput = ({
 export const PassWordInput = ({
   text,
   placeHolderText,
+  setFunction,
 }: {
   text: string;
   placeHolderText: string;
+  setFunction: Dispatch<SetStateAction<string>>;
 }) => {
   const [type, setType] = useState("password");
 
@@ -80,6 +85,7 @@ export const PassWordInput = ({
           }}
           placeholder={placeHolderText}
           type={type}
+          onChange={(e) => setFunction(`${e.target.value}`)}
         />
         <ButtonBase onClick={() => HandlerType()}>
           {type == "password" ? (

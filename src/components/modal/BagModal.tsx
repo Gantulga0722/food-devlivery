@@ -7,22 +7,22 @@ import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import { ButtonBase, Stack, Typography } from "@mui/material";
 import { BagIcon, BascketIcon } from "../icons";
-import { useBag } from "../context/BagContext";
+import { useBag } from "@/components/context/BagContext";
 import { ModalPmButtons } from "./ModalPmButtons";
 import { useRouter } from "next/router";
 
 export const TemporaryDrawer = () => {
   const router = useRouter();
 
-  const { bagItem } = useBag();
-
-  console.log("bag Item", bagItem);
+  const { bagItem, setBagItem } = useBag();
 
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
+  console.log("in Drawer: ", bagItem);
+  console.log("in Drawer: ", setBagItem);
 
   const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
     "& .MuiBadge-badge": {
@@ -62,7 +62,7 @@ export const TemporaryDrawer = () => {
             </Typography>
           </Stack>
         </Stack>
-        <Stack marginY={"24px"} gap={"24px"}>
+        <Stack marginY={"24px"} gap={"24px"} direction={"row"}>
           {bagItem.map((food, index) => (
             <Stack
               key={index}
@@ -71,6 +71,7 @@ export const TemporaryDrawer = () => {
               gap={"16px"}
               borderRadius={"8px"}
               sx={{ backgroundColor: "#FFF" }}
+              direction={"row"}
             >
               <Stack
                 width={"245px"}
@@ -89,7 +90,7 @@ export const TemporaryDrawer = () => {
                   </Stack>
                   <Stack></Stack>
                 </Stack>
-                <Stack gap={"4px"}>
+                <Stack gap={"4px"} direction={"row"}>
                   {food.ingredients.map(
                     (
                       ingr:
