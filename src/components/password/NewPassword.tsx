@@ -23,10 +23,12 @@ export const NewPassword = () => {
             <PassWordInput
               text={"Нууц үг"}
               placeHolderText={"Шинэ нууц үг оруулна уу"}
+              setFunction={() => {}}
             />
             <PassWordInput
               text={"Нууц үг давтах"}
               placeHolderText={"Нууц үгээ давтан оруулна уу"}
+              setFunction={() => {}}
             />
           </Stack>
         </Stack>

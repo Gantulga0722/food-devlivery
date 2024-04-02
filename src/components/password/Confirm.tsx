@@ -52,6 +52,7 @@ export const Confirm = ({ email }: { email: string }) => {
             <PassWordInput
               text={"Нууц үг сэргээх код"}
               placeHolderText={"Баталгаажуулах код оруулна уу"}
+              setFunction={() => {}}
             />
           </Stack>
         </Stack>

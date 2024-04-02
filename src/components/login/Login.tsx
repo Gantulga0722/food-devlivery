@@ -13,7 +13,7 @@ export const LoginComp = () => {
     setComponent("password");
   };
 
-  const BE_URL = "http://localhost:4000/login";
+  const BE_URL = "http://localhost:4000/api/login";
   const [userEmail, setUserEmail] = useState("");
   const [userPassword, setPassword] = useState("");
   const router = useRouter();
