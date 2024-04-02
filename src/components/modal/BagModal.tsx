@@ -6,9 +6,9 @@ import List from "@mui/material/List";
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import { ButtonBase, Stack, Typography } from "@mui/material";
-import { BagIcon, BascketIcon } from "../icons";
+import { BagIcon, BascketIcon, CloseIconModal } from "../icons";
 import { useBag } from "@/components/context/BagContext";
-import { ModalPmButtons } from "./ModalPmButtons";
+import { BagModalPmButtons } from "./ModalPmButtons";
 import { useRouter } from "next/router";
 
 export const TemporaryDrawer = () => {
@@ -62,7 +62,7 @@ export const TemporaryDrawer = () => {
             </Typography>
           </Stack>
         </Stack>
-        <Stack marginY={"24px"} gap={"24px"} direction={"row"}>
+        <Stack marginY={"24px"} gap={"24px"}>
           {bagItem.map((food, index) => (
             <Stack
               key={index}
@@ -82,13 +82,35 @@ export const TemporaryDrawer = () => {
                   backgroundPosition: "center",
                 }}
               ></Stack>
-              <Stack gap={"8px"}>
-                <Stack>
-                  <Stack>
-                    <Typography></Typography>
-                    <Typography></Typography>
+              <Stack gap={"8px"} width={"245px"} height={"150px"}>
+                <Stack direction={"row"}>
+                  <Stack gap={"2px"} width={"197px"}>
+                    <Typography
+                      fontSize={"18px"}
+                      fontWeight={600}
+                      color={"#000"}
+                    >
+                      {food.foodName}
+                    </Typography>
+                    <Typography
+                      fontSize={"18px"}
+                      fontWeight={600}
+                      color={"#18BA51"}
+                    >
+                      {food.price}₮
+                    </Typography>
                   </Stack>
-                  <Stack></Stack>
+                  <ButtonBase>
+                    <Stack
+                      width={"48px"}
+                      height={"48px"}
+                      padding={"5px"}
+                      justifyContent={"center"}
+                      alignItems={"center"}
+                    >
+                      <CloseIconModal />
+                    </Stack>
+                  </ButtonBase>
                 </Stack>
                 <Stack gap={"4px"} direction={"row"}>
                   {food.ingredients.map(
@@ -113,7 +135,7 @@ export const TemporaryDrawer = () => {
                   )}
                 </Stack>
                 <Stack>
-                  <ModalPmButtons
+                  <BagModalPmButtons
                     subHandle={() => {}}
                     sumHandle={() => {}}
                     value={bagItem[0].count}
