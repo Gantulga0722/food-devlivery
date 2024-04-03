@@ -1,11 +1,14 @@
 import { InputBase, Stack, Typography } from "@mui/material";
+import { Dispatch, SetStateAction } from "react";
 
 export const AddFoodInfo = ({
   text,
   placehold,
+  setFunction,
 }: {
   text: string;
   placehold: string;
+  setFunction: Dispatch<SetStateAction<string>>;
 }) => {
   return (
     <Stack gap={"8px"}>
@@ -41,7 +44,10 @@ export const AddFoodInfo = ({
         bgcolor={"#F4F4F4"}
         justifyContent={"center"}
       >
-        <InputBase placeholder={placehold}></InputBase>
+        <InputBase
+          placeholder={placehold}
+          onChange={(e) => setFunction(`${e.target.value}`)}
+        ></InputBase>
       </Stack>
     </Stack>
   );

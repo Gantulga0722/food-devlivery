@@ -25,6 +25,25 @@ export const AddCategoryModal = ({
   isOpen: boolean;
   onClose: (_e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void;
 }) => {
+  const BE_URL = "http://localhost:4000/api/category";
+  const [categoryName, setCategoryName] = React.useState("");
+
+  const handleAddCategory = async () => {
+    const data = {
+      name: categoryName,
+    };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const FETCHED_DATA = await fetch(BE_URL, options);
+    const FETCHED_JSON = await FETCHED_DATA.json();
+    console.log("fethc", FETCHED_JSON);
+  };
+
   return (
     <Stack>
       <Modal
@@ -54,6 +73,7 @@ export const AddCategoryModal = ({
             <AddFoodInfo
               text={"Category name"}
               placehold={"Write Category name"}
+              setFunction={setCategoryName}
             />
           </Stack>
           <Stack
@@ -79,7 +99,7 @@ export const AddCategoryModal = ({
                 </Typography>
               </Stack>
             </ButtonBase>
-            <ButtonBase>
+            <ButtonBase onClick={handleAddCategory}>
               <Stack
                 padding={"10px 16px"}
                 justifyContent={"center"}
