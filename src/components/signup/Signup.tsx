@@ -7,6 +7,8 @@ import { useState } from "react";
 
 export const SignUpComp = () => {
   const [text, setText] = useState("");
+  const [email, setEmail] = useState("");
+  const [address, setAddress] = useState("");
   const BE_URL = "http://localhost:4000/api/register";
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
@@ -20,7 +22,7 @@ export const SignUpComp = () => {
       address: userAdresse,
       password: userPassword,
     };
-
+    console.log("userdata", data);
     const options = {
       method: "POST",
       headers: {
@@ -29,8 +31,9 @@ export const SignUpComp = () => {
       body: JSON.stringify(data),
     };
     const FETCHED_DATA = await fetch(BE_URL, options);
-    const FETCHED_JSON = await FETCHED_DATA.json();
-    console.log("user data", FETCHED_JSON);
+    console.log(FETCHED_DATA);
+    // const FETCHED_JSON = await FETCHED_DATA.json();
+    // console.log("user data", FETCHED_JSON);
   };
   return (
     <Stack
@@ -58,15 +61,15 @@ export const SignUpComp = () => {
           <TextInput
             text={"Имэйл"}
             placeHolderText={"И-мэйл хаягаа оруулна уу"}
-            value={text}
-            setText={setText}
+            value={email}
+            setText={setEmail}
             setFunction={setUserEmail}
           />
           <TextInput
             text={"Хаяг"}
             placeHolderText={"Та хаягаа оруулна уу"}
-            value={text}
-            setText={setText}
+            value={address}
+            setText={setAddress}
             setFunction={setUserAdressel}
           />
           <PassWordInput

@@ -14,15 +14,13 @@ import { useRouter } from "next/router";
 export const TemporaryDrawer = () => {
   const router = useRouter();
 
-  const { bagItem, setBagItem } = useBag();
+  const { bagItem } = useBag();
 
   const [open, setOpen] = React.useState(false);
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
   };
-  console.log("in Drawer: ", bagItem);
-  console.log("in Drawer: ", setBagItem);
 
   const StyledBadge = styled(Badge)<BadgeProps>(({ theme }) => ({
     "& .MuiBadge-badge": {
