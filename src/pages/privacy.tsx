@@ -1,7 +1,7 @@
-import { Zone } from "@/components/deliveryinfo/Zone";
+import { PrivacyComp } from "@/components/deliveryinfo/PrivacyComp";
 import { Container, Stack } from "@mui/material";
 
-const DeliveryZone = () => {
+const Privacy = () => {
   return (
     <Stack
       width={"100%"}
@@ -11,10 +11,10 @@ const DeliveryZone = () => {
     >
       <Container maxWidth={"xl"} sx={{ width: "1306px" }}>
         <Stack bgcolor={"#FFF"}>
-          <Zone />
+          <PrivacyComp />
         </Stack>
       </Container>
     </Stack>
   );
 };
-export default DeliveryZone;
+export default Privacy;

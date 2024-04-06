@@ -58,13 +58,13 @@ export const Footer = () => {
             <ButtonBase onClick={() => router.push("/menu")}>
               <FooterButton text={"Хоолны цэс"} />
             </ButtonBase>
-            <ButtonBase>
+            <ButtonBase onClick={() => router.push("/terms")}>
               <FooterButton text={"Үйлчилгээний нөхцөл"} />
             </ButtonBase>
-            <ButtonBase>
+            <ButtonBase onClick={() => router.push("/deliveryzone")}>
               <FooterButton text={"Хүргэлтийн бүс"} />
             </ButtonBase>
-            <ButtonBase>
+            <ButtonBase onClick={() => router.push("/privacy")}>
               <FooterButton text={"Нууцлалын бодлого"} />
             </ButtonBase>
           </Stack>

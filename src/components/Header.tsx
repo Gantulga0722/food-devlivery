@@ -51,7 +51,7 @@ export const Header = () => {
             <ButtonBase onClick={() => router.push("/menu")}>
               <HeaderButton text={"ХООЛНЫ ЦЭС"} />
             </ButtonBase>
-            <ButtonBase>
+            <ButtonBase onClick={() => router.push("/deliveryzone")}>
               <HeaderButton text={"ХҮРГЭЛТИЙН БҮС"} />
             </ButtonBase>
           </Stack>

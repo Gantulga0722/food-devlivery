@@ -1,7 +1,7 @@
-import { Zone } from "@/components/deliveryinfo/Zone";
+import { TermsComp } from "@/components/deliveryinfo/TermsComp";
 import { Container, Stack } from "@mui/material";
 
-const DeliveryZone = () => {
+const Terms = () => {
   return (
     <Stack
       width={"100%"}
@@ -11,10 +11,10 @@ const DeliveryZone = () => {
     >
       <Container maxWidth={"xl"} sx={{ width: "1306px" }}>
         <Stack bgcolor={"#FFF"}>
-          <Zone />
+          <TermsComp />
         </Stack>
       </Container>
     </Stack>
   );
 };
-export default DeliveryZone;
+export default Terms;
