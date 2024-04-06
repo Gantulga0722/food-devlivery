@@ -2,7 +2,7 @@ import Head from "next/head";
 import * as React from "react";
 import { HomeDescktopComp, HomeInfo } from "@/components/home";
 import { Container, Stack } from "@mui/material";
-import { useFood } from "@/components/context/Context";
+import { useFood } from "@/components/context/FoodContextProvider";
 
 import { HomeSection } from "@/components/home/Section";
 import { CategoryData } from "@/utils/dummy-data-cards";

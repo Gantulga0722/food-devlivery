@@ -2,7 +2,7 @@ import { Stack } from "@mui/material";
 import { MenuButton } from "@/components/buttons";
 import { FoodCard } from "../cards";
 import { CategoryData } from "@/utils/dummy-data-cards";
-import { useFood } from "@/components/context/Context";
+import { useFood } from "@/components/context/FoodContextProvider";
 import { useState } from "react";
 
 export const Menu = () => {
