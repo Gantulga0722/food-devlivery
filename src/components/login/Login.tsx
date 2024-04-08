@@ -85,7 +85,7 @@ export const LoginComp = () => {
           alignItems={"center"}
         >
           <Stack>
-            <ButtonBase onClick={() => handleLoginUser}>
+            <ButtonBase onClick={handleLoginUser}>
               <LoginButton text={"Нэвтрэх"} />
             </ButtonBase>
           </Stack>
