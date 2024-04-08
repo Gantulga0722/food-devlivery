@@ -32,7 +32,15 @@ export const LoginComp = () => {
     };
     const FETCHED_DATA = await fetch(BE_URL, options);
     const FETCHED_JSON = await FETCHED_DATA.json();
-    console.log("fethc", FETCHED_JSON);
+
+    if (FETCHED_JSON.token != null) {
+      localStorage.setItem("newToken", FETCHED_JSON.token);
+      router.push("/");
+    } else {
+      alert("Email or password is incorrect");
+    }
+
+    console.log("fetch", FETCHED_JSON.token);
   };
 
   return (
