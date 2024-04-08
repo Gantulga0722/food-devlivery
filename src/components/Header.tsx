@@ -13,12 +13,11 @@ import SearchIcon from "@mui/icons-material/Search";
 import { useRouter } from "next/router";
 import { HeaderButton } from "@/components/buttons";
 import { TemporaryDrawer } from "./modal/BagModal";
-import { useBag } from "./context/BagContext";
 
 export const Header = () => {
   const router = useRouter();
-  const { bagItem } = useBag();
-  console.log(bagItem);
+  // const tokenCheck = localStorage.getItem("newToken");
+
   return (
     <Stack
       direction={"row"}
@@ -107,6 +106,9 @@ export const Header = () => {
             }}
           >
             <LoginIcon />
+
+            <ButtonBase></ButtonBase>
+
             <ButtonBase onClick={() => router.push("/login")}>
               <Typography
                 sx={{
