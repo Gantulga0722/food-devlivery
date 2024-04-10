@@ -7,10 +7,29 @@ import { Confirm } from "./Confirm";
 export const SetPassword = () => {
   const [component, setComponent] = useState("email");
   const [text, setText] = useState("");
+  const [userEmail, setUserEmail] = useState("");
 
   const HandlerComponent = () => {
     setComponent("confirm");
   };
+  const BE_URL = "http://localhost:4000/api/vcConfirm";
+
+  const handleSendEmail = async () => {
+    const data = {
+      email: userEmail,
+    };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const FETCHED_DATA = await fetch(BE_URL, options);
+    // const FETCHED_JSON = await FETCHED_DATA.json();
+    console.log("fethc", FETCHED_DATA);
+  };
+
   return (
     <Stack>
       <Stack display={`${component == "email" ? "none" : "flex"}`}>
@@ -37,7 +56,7 @@ export const SetPassword = () => {
               placeHolderText={"Имэйл хаягаа оруулна уу"}
               setText={setText}
               value={text}
-              setFunction={()=>{}}
+              setFunction={setUserEmail}
             />
           </Stack>
         </Stack>
@@ -48,7 +67,12 @@ export const SetPassword = () => {
           alignItems={"center"}
         >
           <Stack>
-            <ButtonBase onClick={() => HandlerComponent()}>
+            <ButtonBase
+              onClick={() => {
+                HandlerComponent();
+                handleSendEmail();
+              }}
+            >
               <LoginButton text={"Үргэлжлүүлэх"} />
             </ButtonBase>
           </Stack>
