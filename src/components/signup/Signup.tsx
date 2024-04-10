@@ -4,6 +4,7 @@ import { TextInput, PassWordInput } from "@/components/inputs";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import { useState } from "react";
+import { useRouter } from "next/router";
 
 export const SignUpComp = () => {
   const [text, setText] = useState("");
@@ -14,6 +15,7 @@ export const SignUpComp = () => {
   const [userEmail, setUserEmail] = useState("");
   const [userAdresse, setUserAdressel] = useState("");
   const [userPassword, setUserPassword] = useState("");
+  const router = useRouter();
 
   const handleSubmitUser = async () => {
     const data = {
@@ -22,7 +24,6 @@ export const SignUpComp = () => {
       address: userAdresse,
       password: userPassword,
     };
-    console.log("userdata", data);
     const options = {
       method: "POST",
       headers: {
@@ -32,8 +33,6 @@ export const SignUpComp = () => {
     };
     const FETCHED_DATA = await fetch(BE_URL, options);
     console.log(FETCHED_DATA);
-    // const FETCHED_JSON = await FETCHED_DATA.json();
-    // console.log("user data", FETCHED_JSON);
   };
   return (
     <Stack
@@ -99,7 +98,12 @@ export const SignUpComp = () => {
           />
         </Stack>
         <Stack>
-          <ButtonBase onClick={handleSubmitUser}>
+          <ButtonBase
+            onClick={() => {
+              handleSubmitUser();
+              router.push("/login");
+            }}
+          >
             <LoginButton text={"Бүртгүүлэх"} />
           </ButtonBase>
         </Stack>

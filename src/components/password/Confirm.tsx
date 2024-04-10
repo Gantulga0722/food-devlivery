@@ -6,16 +6,40 @@ import { NewPassword } from "./NewPassword";
 
 export const Confirm = ({ email }: { email: string }) => {
   const [component, setComponent] = useState("code");
+  const [userPassword, setUserPassword] = useState("");
+  const [user, setUser] = useState<any | null>(null);
+
+  const BE_URL = "http://localhost:4000/api/confirmVcode";
 
   const HandlerComponent = () => {
     setComponent("confirm");
   };
 
+  const handleConfirm = async () => {
+    const data = {
+      email: email,
+      password: userPassword,
+    };
+    const options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    };
+    const FETCHED_DATA = await fetch(BE_URL, options);
+    const FETCHED_JSON = await FETCHED_DATA.json();
+
+    if (FETCHED_JSON.message == "successful") {
+      HandlerComponent();
+      setUser(FETCHED_JSON.user);
+    } else {
+      alert("Email or password is incorrect");
+    }
+  };
+
   return (
     <Stack>
-      <Stack display={`${component == "code" ? "none" : "flex"}`}>
-        <NewPassword />
-      </Stack>
       <Stack
         display={`${component == "code" ? "flex" : "none"}`}
         padding={"32px"}
@@ -45,14 +69,14 @@ export const Confirm = ({ email }: { email: string }) => {
           >
             {email}
           </Typography>{" "}
-          руу сэргээх код илгээх болно.
+          гэсэн хаягруу сэргээх код илгээгдлээ.
         </Stack>
         <Stack gap={"8px"} width={"384px"}>
           <Stack gap={"16px"}>
             <PassWordInput
               text={"Нууц үг сэргээх код"}
               placeHolderText={"Баталгаажуулах код оруулна уу"}
-              setFunction={() => {}}
+              setFunction={setUserPassword}
             />
           </Stack>
         </Stack>
@@ -63,11 +87,14 @@ export const Confirm = ({ email }: { email: string }) => {
           alignItems={"center"}
         >
           <Stack>
-            <ButtonBase onClick={() => HandlerComponent()}>
+            <ButtonBase onClick={handleConfirm}>
               <LoginButton text={"Үргэлжлүүлэх"} />
             </ButtonBase>
           </Stack>
         </Stack>
+      </Stack>
+      <Stack display={`${component == "code" ? "none" : "flex"}`}>
+        <NewPassword user={user} />
       </Stack>
     </Stack>
   );

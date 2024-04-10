@@ -10,10 +10,16 @@ export const SetPassword = () => {
   const [userEmail, setUserEmail] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
 
+  const BE_URL = "http://localhost:4000/api/sendCode";
+
   const HandlerComponent = () => {
-    setComponent("confirm");
+    if (alertMessage == "Email sent successfully") {
+      setComponent("confirm");
+      console.log("alertMessage", alertMessage);
+    } else {
+      alert(alertMessage);
+    }
   };
-  const BE_URL = "http://localhost:4000/api/vcConfirm";
 
   const handleSendEmail = async () => {
     const data = {
@@ -30,21 +36,18 @@ export const SetPassword = () => {
     try {
       const response = await fetch(BE_URL, options);
       const jsonData = await response.json();
-      console.log("fetched data", jsonData);
 
-      if (jsonData.success) {
-        // Email sent successfully
+      if (jsonData.success == true) {
         setAlertMessage("Email sent successfully");
+        HandlerComponent();
       } else {
-        // Handle specific error messages from the backend
         setAlertMessage(jsonData.message);
+        HandlerComponent();
       }
     } catch (error) {
       console.error("Error sending email:", error);
       setAlertMessage("Error sending email");
     }
-
-    console.log("alertMessage after setting:", alertMessage); // Add this line
   };
 
   return (
@@ -93,12 +96,7 @@ export const SetPassword = () => {
             alignItems="center"
           >
             <Stack>
-              <ButtonBase
-                onClick={() => {
-                  HandlerComponent();
-                  handleSendEmail();
-                }}
-              >
+              <ButtonBase onClick={handleSendEmail}>
                 <LoginButton text="Үргэлжлүүлэх" />
               </ButtonBase>
             </Stack>
