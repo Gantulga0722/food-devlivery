@@ -3,6 +3,7 @@ import { LoginButton } from "@/components/buttons";
 import { PassWordInput } from "@/components/inputs";
 import { useState } from "react";
 import { useRouter } from "next/router";
+import { PassUpdatedIcon } from "../icons";
 
 export const NewPassword = ({ user }: { user: any }) => {
   const [newPass, setNewPass] = useState("");
@@ -55,7 +56,22 @@ export const NewPassword = ({ user }: { user: any }) => {
         border={"1px solid #18BA51"}
         bgcolor={"#FFF"}
         boxShadow={"4px 4px 40px 0px rgba(0, 0, 0, 0.05)"}
-      ></Stack>
+        direction={"row"}
+      >
+        <Stack width={"24px"} height={"24px"}>
+          <PassUpdatedIcon />
+        </Stack>
+        <Stack width={"266px"}>
+          <Typography
+            fontSize={"16px"}
+            fontWeight={400}
+            color={"#18BA51"}
+            textAlign={"center"}
+          >
+            Нууц үг амжилттай солигдлоо
+          </Typography>
+        </Stack>
+      </Stack>
       <Stack
         padding={"32px"}
         gap={"48px"}
