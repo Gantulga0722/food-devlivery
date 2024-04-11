@@ -10,7 +10,7 @@ export const SignUpComp = () => {
   const [text, setText] = useState("");
   const [email, setEmail] = useState("");
   const [address, setAddress] = useState("");
-  const BE_URL = "http://localhost:4000/api/register";
+  const BE_URL = "https://food-delivery-be-zeta.vercel.app/api/register";
   const [userName, setUserName] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userAdresse, setUserAdressel] = useState("");

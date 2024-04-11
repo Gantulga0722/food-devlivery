@@ -21,7 +21,7 @@ export const NewPassword = ({ user }: { user: any }) => {
     autoReloadPage(3000);
   }
 
-  const BE_URL = "http://localhost:4000/api/setNewPass";
+  const BE_URL = "https://food-delivery-be-zeta.vercel.app/api/setNewPass";
 
   const handleSetNewPass = async () => {
     if (newPass == redoNewPass) {

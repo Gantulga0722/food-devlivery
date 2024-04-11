@@ -10,7 +10,7 @@ export const SetPassword = () => {
   const [userEmail, setUserEmail] = useState("");
   const [alertMessage, setAlertMessage] = useState("");
 
-  const BE_URL = "http://localhost:4000/api/sendCode";
+  const BE_URL = "https://food-delivery-be-zeta.vercel.app/api/sendCode";
 
   const HandlerComponent = () => {
     if (alertMessage == "Email sent successfully") {

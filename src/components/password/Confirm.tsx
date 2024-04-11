@@ -9,7 +9,7 @@ export const Confirm = ({ email }: { email: string }) => {
   const [userPassword, setUserPassword] = useState("");
   const [user, setUser] = useState<any | null>(null);
 
-  const BE_URL = "http://localhost:4000/api/confirmVcode";
+  const BE_URL = "https://food-delivery-be-zeta.vercel.app/api/confirmVcode";
 
   const HandlerComponent = () => {
     setComponent("confirm");
