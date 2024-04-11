@@ -11,6 +11,16 @@ export const NewPassword = ({ user }: { user: any }) => {
   const [checkRes, setCheckRes] = useState("unckecked");
   const router = useRouter();
 
+  if (checkRes == "checked") {
+    const autoReloadPage = (interval: number): void => {
+      setTimeout(() => {
+        window.location.reload();
+      }, interval);
+    };
+
+    autoReloadPage(3000);
+  }
+
   const BE_URL = "http://localhost:4000/api/setNewPass";
 
   const handleSetNewPass = async () => {
@@ -45,7 +55,7 @@ export const NewPassword = ({ user }: { user: any }) => {
   };
 
   return (
-    <Stack>
+    <Stack paddingTop={"100px"}>
       <Stack
         display={`${checkRes == "unckecked" ? "none" : "flex"}`}
         width={"338px"}
@@ -57,6 +67,7 @@ export const NewPassword = ({ user }: { user: any }) => {
         bgcolor={"#FFF"}
         boxShadow={"4px 4px 40px 0px rgba(0, 0, 0, 0.05)"}
         direction={"row"}
+        margin={"auto"}
       >
         <Stack width={"24px"} height={"24px"}>
           <PassUpdatedIcon />
@@ -77,7 +88,7 @@ export const NewPassword = ({ user }: { user: any }) => {
         gap={"48px"}
         bgcolor={"#FFF"}
         justifyContent={"center"}
-        marginTop={"150px"}
+        marginTop={"50px"}
         marginBottom={"150px"}
       >
         <Stack justifyContent={"center"} width={"384px"} alignItems={"center"}>
