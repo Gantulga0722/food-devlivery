@@ -3,14 +3,36 @@ import * as React from "react";
 import { HomeDescktopComp, HomeInfo } from "@/components/home";
 import { Container, Stack } from "@mui/material";
 import { useFood } from "@/components/context/FoodContextProvider";
-
 import { HomeSection } from "@/components/home/Section";
-import { CategoryData } from "@/utils/dummy-data-cards";
 import { HomeSaleSec } from "@/components/home/HomeSaleSec";
 
+type Category = {
+  _id: string;
+  name: string;
+};
+
 const Home = () => {
+  const [cateData, setCateData] = React.useState<Category[]>([]);
   const { allFood } = useFood();
   const saleFoods = allFood.filter((food) => food.sale > 0).slice(0, 4);
+
+  const BE_URL = "https://food-delivery-be-zeta.vercel.app/api/category";
+
+  React.useEffect(() => {
+    const handleGetCategory = async () => {
+      const options = {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      };
+      const fetched_data = await fetch(BE_URL, options);
+      const fetched_json = await fetched_data.json();
+      console.log("fetchedCate", fetched_json.categories);
+      setCateData(fetched_json.categories);
+    };
+    handleGetCategory();
+  }, []);
 
   return (
     <>
@@ -33,9 +55,9 @@ const Home = () => {
 
           <Stack gap={"80px"}>
             <HomeSaleSec title="Хямдралтай" saleFoods={saleFoods} />
-            {CategoryData.map((cat, index) => {
+            {cateData.map((cat, index) => {
               const fourFoods = allFood
-                .filter((food) => food.category == cat.name && food.sale == 0)
+                .filter((food) => food.category == cat._id && food.sale == 0)
                 .slice(0, 4);
               return (
                 <Stack key={index} gap={"80px"}>
