@@ -146,18 +146,13 @@ export const FoodModal = ({
                 borderRadius={"8px"}
                 sx={{ backgroundColor: "#F6F6F6" }}
               >
-                {ingredients.map(
-                  (ingre: string, index: React.Key | null | undefined) => (
-                    <Typography
-                      key={index}
-                      color={"#767676"}
-                      fontSize={"16px"}
-                      fontWeight={400}
-                    >
-                      {ingre},
-                    </Typography>
-                  )
-                )}
+                <Typography
+                  color={"#767676"}
+                  fontSize={"16px"}
+                  fontWeight={400}
+                >
+                  {ingredients},
+                </Typography>
               </Stack>
             </Stack>
             <Stack>
